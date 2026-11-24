@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأنظمة والقوانين - العمارية</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif']
+          },
+          colors: {
+            amariah: {
+              dark: '#060c10',
+              surface: '#0c161d',
+              card: '#111f29',
+              border: '#1f3646',
+              accent: '#10b981',
+              gold: '#eab308'
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #060c10;
+      color: #f8fafc;
+    }
+    mark.hit {
+      background-color: rgba(16, 185, 129, 0.28);
+      color: #a7f3d0;
+      padding: 0 4px;
+      border-radius: 4px;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col bg-amariah-dark text-slate-100">
+  <!-- الشريط العلوي -->
+  <header class="sticky top-0 z-30 bg-amariah-dark/95 backdrop-blur border-b border-amariah-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-black">
+          ع
+        </div>
+        <div>
+          <div class="text-base sm:text-lg font-extrabold text-white">العمارية</div>
+          <div class="text-[11px] text-slate-400">الأنظمة والقوانين العسكرية</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-2 text-sm font-bold">
+        <a href="#violations" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition">بنود المخالفات</a>
+        <a href="#penalties" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition">لائحة العقوبات</a>
+        <a href="#rules" class="px-3 py-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/5 transition">ضوابط عامة</a>
+      </nav>
+
+      <span class="px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+        حقوق العمارية
+      </span>
+    </div>
+  </header>
+
+  <!-- المقدمة والإحصائيات والبحث -->
+  <section id="top" class="pt-10 pb-8 border-b border-amariah-border bg-gradient-to-b from-amariah-surface to-amariah-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-xs sm:text-sm font-bold text-emerald-400 mb-2">العمارية — النظام العسكري</p>
+      <h1 class="text-2xl sm:text-4xl font-black text-white mb-3">الأنظمة والقوانين العسكرية — العمارية</h1>
+      <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto mb-7">
+        دليل شامل لبنود المخالفات والعقوبات المعتمدة في العمارية لجميع الرتب العسكرية
+      </p>
+
+      <div class="grid grid-cols-3 gap-3 sm:gap-5 max-w-3xl mx-auto mb-7">
+        <div class="rounded-2xl bg-amariah-card border border-amariah-border p-4">
+          <div class="text-2xl sm:text-3xl font-black text-emerald-400">7</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-200 mt-1">درجات مخالفات</div>
+        </div>
+        <div class="rounded-2xl bg-amariah-card border border-amariah-border p-4">
+          <div id="totalItemsCount" class="text-2xl sm:text-3xl font-black text-amber-400">98</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-200 mt-1">بند قانوني</div>
+        </div>
+        <div class="rounded-2xl bg-amariah-card border border-amariah-border p-4">
+          <div class="text-2xl sm:text-3xl font-black text-white">8</div>
+          <div class="text-xs sm:text-sm font-bold text-slate-200 mt-1">رتب عسكرية</div>
+        </div>
+      </div>
+
+      <div class="max-w-2xl mx-auto relative">
+        <input
+          id="searchBox"
+          type="text"
+          placeholder="ابحث برقم البند (مثل 1-4) أو باسم المخالفة..."
+          class="w-full py-3.5 px-4 rounded-2xl bg-amariah-card border border-amariah-border text-white placeholder-slate-400 text-sm sm:text-base focus:outline-none focus:border-emerald-400"
+        />
+        <button
+          id="clearBtn"
+          type="button"
+          class="hidden absolute left-3 top-1/2 -translate-y-1/2 px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 text-xs font-bold text-slate-200"
+        >
+          مسح
+        </button>
+      </div>
+      <div id="filterStatus" class="hidden mt-3 text-xs sm:text-sm text-emerald-300 font-bold"></div>
+    </div>
+  </section>
+
+  <!-- تبويبات الدرجات -->
+  <div class="sticky top-16 z-20 bg-amariah-surface/95 backdrop-blur border-b border-amariah-border">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex items-center gap-2 overflow-x-auto no-scrollbar" id="tabsRow"></div>
+  </div>
+
+  <!-- المحتوى -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-14">
+    <!-- بنود المخالفات -->
+    <section id="violations">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-white">بنود المخالفات (العمارية)</h2>
+        <div class="flex items-center gap-2">
+          <button id="expandAll" type="button" class="px-3 py-1.5 rounded-xl bg-amariah-card border border-amariah-border text-xs font-bold hover:border-emerald-400/50">
+            توسيع الكل
+          </button>
+          <button id="collapseAll" type="button" class="px-3 py-1.5 rounded-xl bg-amariah-card border border-amariah-border text-xs font-bold hover:border-emerald-400/50">
+            طي الكل
+          </button>
+        </div>
+      </div>
+
+      <div id="degreesList" class="space-y-6"></div>
+      <div id="noResults" class="hidden rounded-2xl bg-amariah-card border border-amariah-border p-8 text-center">
+        <p class="text-base font-bold text-white mb-3">لا توجد نتائج مطابقة لبحثك</p>
+        <button id="resetSearchBtn" type="button" class="px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-extrabold text-sm">
+          إظهار جميع البنود
+        </button>
+      </div>
+    </section>
+
+    <!-- لائحة العقوبات -->
+    <section id="penalties" class="pt-4">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white">لائحة العقوبات الرسمية</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">العقوبات المفصلة حسب الرتبة لكل درجة مخالفة</p>
+        </div>
+
+        <!-- استعلام سريع حسب الرتبة والدرجة -->
+        <div class="rounded-2xl bg-amariah-card border border-amariah-border p-3.5 flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          <select id="rankPicker" class="px-3 py-2 rounded-xl bg-amariah-dark border border-amariah-border text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-emerald-400"></select>
+          <select id="gradePicker" class="px-3 py-2 rounded-xl bg-amariah-dark border border-amariah-border text-xs sm:text-sm font-bold text-white focus:outline-none focus:border-emerald-400">
+            <option value="1">الدرجة الأولى</option>
+            <option value="2">الدرجة الثانية</option>
+            <option value="3">الدرجة الثالثة</option>
+            <option value="4">الدرجة الرابعة</option>
+            <option value="5">الدرجة الخامسة</option>
+            <option value="6">الدرجة السادسة</option>
+            <option value="7">الدرجة السابعة</option>
+          </select>
+          <div id="quickPenaltyOutput" class="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-xs sm:text-sm font-extrabold text-emerald-300"></div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl bg-amber-500/10 border border-amber-500/30 p-4 mb-6 text-xs sm:text-sm text-amber-100">
+        <strong class="text-amber-300">ملاحظة:</strong> العقوبة تُحدد حسب درجة المخالفة + الرتبة، ويجوز للقيادة التشديد أو التخفيف (تقديري).
+      </div>
+
+      <div id="matrixCards" class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6"></div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="rounded-2xl bg-amariah-card border border-slate-700 p-5">
+          <h3 class="font-extrabold text-white mb-2">⚫ الدرجة الخامسة - عسكرية</h3>
+          <p class="text-xs sm:text-sm text-slate-300"><strong>جميع الرتب:</strong> عسكرية مباشرة + إمكانية الفصل (حسب التقدير)</p>
+        </div>
+        <div class="rounded-2xl bg-amariah-card border border-amber-500/40 p-5">
+          <h3 class="font-extrabold text-amber-300 mb-2">⚠️ الدرجة السادسة - فصل</h3>
+          <p class="text-xs sm:text-sm text-slate-300"><strong>جميع الرتب:</strong> فصل من الخدمة</p>
+        </div>
+        <div class="rounded-2xl bg-amariah-card border border-rose-500/40 p-5">
+          <h3 class="font-extrabold text-rose-400 mb-2">⛔ الدرجة السابعة - فصل نهائي</h3>
+          <p class="text-xs sm:text-sm text-slate-300"><strong>جميع الرتب:</strong> فصل نهائي + رفع للقيادة العليا</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- الضوابط العامة -->
+    <section id="rules" class="pt-4">
+      <div class="rounded-3xl bg-amariah-card border border-amariah-border p-6">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-white mb-5">ضوابط عامة</h2>
+        <ul id="generalRulesList" class="grid grid-cols-1 md:grid-cols-2 gap-3.5 text-sm"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- الفوتر -->
+  <footer class="border-t border-amariah-border bg-amariah-surface py-6 mt-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-right">
+      <div class="text-xs sm:text-sm font-bold text-slate-200">
+        جميع الحقوق محفوظة © 2026 | حقوق العمارية
+      </div>
+      <div class="text-xs sm:text-sm font-extrabold text-emerald-400">
+        تنفيذ سلطان الحربي
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const RANKS = [
+      'جندي',
+      'جندي أول',
+      'عريف / وكيل رقيب',
+      'رقيب / رقيب أول',
+      'رئيس رقباء',
+      'ملازم',
+      'ملازم أول',
+      'نقيب فما أعلى'
+    ];
+
+    const DEGREES = [
+      {
+        id: 1,
+        name: 'الدرجة الأولى',
+        heading: 'بنود الدرجة الأولى',
+        desc: 'إنذارات خفيفة - غرامة من 100 إلى 500 ألف حسب الرتبة',
+        items: [
+          ['1-1', 'استيقاف مروري أو جنائي خاطئ'],
+          ['1-2', 'مخالفة قوانين نقاط التفتيش'],
+          ['1-3', 'إبقاء الحجز في المركبة وبمباشرة جهة أخرى'],
+          ['1-4', 'إهانة عسكري أو مواطن'],
+          ['1-5', 'عدم تسليم المضبوطات'],
+          ['1-6', 'مخالفة سياسة الخدمة'],
+          ['1-7', 'عدم الالتزام بالمسمى الوظيفي أو عدم التغيير'],
+          ['1-8', 'مخالفة قوانين السجون وتسجيل الخروج'],
+          ['1-9', 'مباشرة الميدان برتبة شخصية'],
+          ['1-10', 'مخالفة قوانين المشاركة العسكرية'],
+          ['1-11', 'سوء استخدام المركبة العسكرية'],
+          ['1-12', 'عدم تسجيل الدخول في الخدمة العسكرية'],
+          ['1-13', 'القيادة غير النظامية'],
+          ['1-14', 'تعطيل مركبة حكومية']
+        ]
+      },
+      {
+        id: 2,
+        name: 'الدرجة الثانية',
+        heading: 'بنود الدرجة الثانية',
+        desc: 'إنذار وظيفي - غرامة من 150 إلى 500 ألف حسب الرتبة',
+        items: [
+          ['2-1', 'دخول موجات غير معتمدة'],
+          ['2-2', 'عدم التجاوب في الموجة'],
+          ['2-3', 'مخالفة الالتزام بالعدد المعتمد'],
+          ['2-4', 'سجن شخص (٥٠ شهر) بدون إذن ضابط'],
+          ['2-5', 'عدم الالتزام بالمظهر العسكري (الشعر، الوشوم، اللبس)'],
+          ['2-6', 'عدم الالتزام بالنظافة العسكرية'],
+          ['2-7', 'تكرار مخالفات بسيطة بعد التنبيه'],
+          ['2-8', 'التمثل في شات (رسائل حرس الحدود)'],
+          ['2-9', 'النزول الميداني بدون تصنيف'],
+          ['2-10', 'المجادلة أمام القادة (تقديرية)'],
+          ['2-11', 'عدم الالتزام ببروتوكولات الراديو'],
+          ['2-12', 'استعمال مخالفات غير مستحقة'],
+          ['2-13', 'البقاء في المركز فترة دون مبرر (سبب)'],
+          ['2-14', 'مباشرة العمليات الميدانية دون إذن (إلا في حالة مواجهة)'],
+          ['2-15', 'مخالفة قوانين السجون (رسائل حرس الحدود)'],
+          ['2-16', 'غموض أكثر من 10 دقائق'],
+          ['2-17', 'عدم الالتزام بصيغة التقارير'],
+          ['2-18', 'عدم أخذ الدورات اللازمة']
+        ]
+      },
+      {
+        id: 3,
+        name: 'الدرجة الثالثة',
+        heading: 'بنود الدرجة الثالثة',
+        desc: 'توبيخ وظيفي - غرامة من 300 إلى 700 ألف حسب الرتبة',
+        items: [
+          ['3-1', 'عدم التقيد بقواعد المطاردات'],
+          ['3-2', 'مخالفة قوانين الاعتقال والتعامل مع المتهمين'],
+          ['3-3', 'إهانة عسكري أو مواطن'],
+          ['3-4', 'مخالفة قوانين الكلية العسكرية'],
+          ['3-5', 'مخالفة قوانين التوجه للحالات'],
+          ['3-6', 'مخالفة قوانين الحواجز والحدود'],
+          ['3-7', 'دخول موجة بدون إذن'],
+          ['3-8', 'الهروب من استلام مهام العمليات'],
+          ['3-9', 'مخالفة قوانين العمليات'],
+          ['3-10', 'التدخل في مهمات الوحدات الأخرى'],
+          ['3-11', 'تسجيل دخول مباشرة حالة ثم تسجيل خروج'],
+          ['3-12', 'إضافة مخالفات أو نقص في التحقيقات'],
+          ['3-13', 'إطلاق النار بشكل عشوائي'],
+          ['3-14', 'تحرير الرهائن بدون إذن أو بدون تحريرها'],
+          ['3-15', 'مخالفة قوانين القيادة العسكرية'],
+          ['3-16', 'كشف هوية البلاغ الجنائي'],
+          ['3-17', 'الانسحاب من موقع البلاغ دون إذن'],
+          ['3-18', 'عدم الالتزام بضوابط التفاوض'],
+          ['3-19', 'استخدام سلاح غير مصرح برتبة (يشمل إساءة المواطنين)'],
+          ['3-20', 'إسقاط عزل'],
+          ['3-21', 'عدم الالتزام بأوامر العمليات'],
+          ['3-22', 'مخالفة قوانين مدة السجن'],
+          ['3-23', 'مخالفة قوانين المصادرات بشكل عام'],
+          ['3-24', 'الكلاشن أثناء الإسقاط']
+        ]
+      },
+      {
+        id: 4,
+        name: 'الدرجة الرابعة',
+        heading: 'بنود الدرجة الرابعة',
+        desc: 'عقوبات مشددة - غرامة من 500 ألف إلى مليون + احتمال فصل',
+        items: [
+          ['4-1', 'مخالفة قوانين (نداء الاستغاثة، استنفار أمني)'],
+          ['4-2', 'التقصير في النداء الطارئ والميدان'],
+          ['4-3', 'عدم الالتزام بالمسار العسكري المحدد بالتكتيك'],
+          ['4-4', 'رسملة شكوى أو بلاغات بطريقة خاطئة'],
+          ['4-5', 'مباشرة الميدان دون الوجود بالموجة'],
+          ['4-6', 'إهمال الميدان'],
+          ['4-7', 'عدم احترام أو مضايقة (رتبة تقديرية)'],
+          ['4-8', 'اسم غير مطابق (الشخصية أو المدنية)'],
+          ['4-9', 'استخدام أوامر F8 بشكل خاطئ']
+        ]
+      },
+      {
+        id: 5,
+        name: 'الدرجة الخامسة',
+        heading: 'بنود الدرجة الخامسة',
+        desc: 'عسكرية مباشرة - إمكانية الفصل حسب التقدير',
+        items: [
+          ['5-1', 'سجن عسكري (بقصد الاستهتار)'],
+          ['5-2', 'التلاعب على المسؤولين (تقديرية)'],
+          ['5-3', 'مخالفة قوانين عدم الإفصاح'],
+          ['5-4', 'محاولة تهريب مواطن'],
+          ['5-5', 'سوء التعامل مع الحالات أو التعدي على مواطن أو إساءة له (تقديرية)'],
+          ['5-6', 'عدم التقيد بالأنظمة الصحية'],
+          ['5-7', 'التوجه خارج الرتب العسكرية'],
+          ['5-8', 'الخروج من الميدان (تقديرية)'],
+          ['5-9', 'سجن عسكري بدون أوامر'],
+          ['5-10', 'التخريب الوظيفي (تقديرية)'],
+          ['5-11', 'عدم الجدية أثناء الدوام العسكري (تقديرية)'],
+          ['5-12', 'إساءة استخدام القطاعات الحكومية'],
+          ['5-13', 'عدم احترام تسلسل الرتب'],
+          ['5-14', 'التمرد العسكري'],
+          ['5-15', 'تهديد الأمن العسكري'],
+          ['5-16', 'التلاعب بالتقارير'],
+          ['5-17', 'الإساءة إلى الشرطة العسكرية بأي شكل'],
+          ['5-18', 'سوء استخدام السلاح (إطلاق نار عشوائي أو إيذاء)']
+        ]
+      },
+      {
+        id: 6,
+        name: 'الدرجة السادسة',
+        heading: 'بنود الدرجة السادسة',
+        desc: 'فصل من الخدمة - لا تقبل الأعذار إلا بقرار قيادي',
+        items: [
+          ['6-1', 'التمرد على زملائك بغاية الحقد سواء بسبب أو بدون سبب'],
+          ['6-2', 'عدم احترام الرتب العليا'],
+          ['6-3', 'الخروج عن حدود الدولة (الدسكورد)'],
+          ['6-4', 'خيانة الأمانة'],
+          ['6-5', 'غير لائق عسكري'],
+          ['6-6', 'التلاعب بعدد العهد'],
+          ['6-7', 'التخريب بوظيفة حرس الحدود ويجب أخذ إذن الحكم قبل الفصل'],
+          ['6-8', 'عدم تواجد لفترة طويلة تزيد عن 3 أسابيع'],
+          ['6-9', 'إثارة الجدل الفني'],
+          ['6-10', 'الفساد العسكري'],
+          ['6-11', 'نشر أسماء سيرفرات أخرى'],
+          ['6-12', 'تعديل المخالفات دون إذن'],
+          ['6-13', 'استخدام السلطة أو الوظيفة لمصلحة شخصية بغير وجه حق']
+        ]
+      },
+      {
+        id: 7,
+        name: 'الدرجة السابعة',
+        heading: 'بنود الدرجة السابعة',
+        desc: 'فصل نهائي - رفع للقيادة العليا',
+        items: [
+          ['7-1', 'مخالفة عدم احترام القيادة'],
+          ['7-2', 'عدم الانضباط لأوامر القيادة'],
+          ['7-3', 'التخريب بأشخاص أو إصابات']
+        ]
+      }
+    ];
+
+    const MATRIX = {
+      1: {
+        title: 'الدرجة الأولى - إنذارات خفيفة',
+        map: {
+          'جندي': 'إنذار شفهي + 100 ألف',
+          'جندي أول': 'إنذار شفهي + 100 ألف',
+          'عريف / وكيل رقيب': 'إنذار شفهي + 150 ألف',
+          'رقيب / رقيب أول': 'إنذار شفهي + 200 ألف',
+          'رئيس رقباء': 'إنذار شفهي + 300 ألف',
+          'ملازم': 'إنذار شفهي + 350 ألف',
+          'ملازم أول': 'إنذار شفهي + 400 ألف',
+          'نقيب فما أعلى': 'إنذار شفهي + 500 ألف'
+        }
+      },
+      2: {
+        title: 'الدرجة الثانية - إنذار وظيفي',
+        map: {
+          'جندي': 'إنذار وظيفي + 150 ألف',
+          'جندي أول': 'إنذار وظيفي + 150 ألف',
+          'عريف / وكيل رقيب': 'إنذار وظيفي + 300 ألف',
+          'رقيب / رقيب أول': 'إنذار وظيفي + 300 ألف',
+          'رئيس رقباء': 'إنذار وظيفي + 400 ألف',
+          'ملازم': 'إنذار وظيفي + 400 ألف',
+          'ملازم أول': 'إنذار وظيفي + 500 ألف',
+          'نقيب فما أعلى': 'إنذار وظيفي + 500 ألف'
+        }
+      },
+      3: {
+        title: 'الدرجة الثالثة - توبيخ',
+        map: {
+          'جندي': 'توبيخ + 300 ألف',
+          'جندي أول': 'توبيخ + 300 ألف',
+          'عريف / وكيل رقيب': 'توبيخ + 350 ألف',
+          'رقيب / رقيب أول': 'توبيخ + 400 ألف',
+          'رئيس رقباء': 'توبيخ + 500 ألف',
+          'ملازم': 'توبيخ + 500 ألف',
+          'ملازم أول': 'توبيخ + 600 ألف',
+          'نقيب فما أعلى': 'توبيخ + 700 ألف'
+        }
+      },
+      4: {
+        title: 'الدرجة الرابعة - عقوبات مشددة',
+        map: {
+          'جندي': 'توبيخ + 500 ألف',
+          'جندي أول': 'توبيخ + 500 ألف',
+          'عريف / وكيل رقيب': 'توبيخ + 700 ألف',
+          'رقيب / رقيب أول': 'توبيخ + 1 مليون',
+          'رئيس رقباء': 'توبيخ + 1 مليون',
+          'ملازم': 'توبيخ + 1 مليون',
+          'ملازم أول': 'توبيخ + 1 مليون + حرمان ترقية',
+          'نقيب فما أعلى': 'فصل من الخدمة (تقديري)'
+        }
+      }
+    };
+
+    const GENERAL_RULES = [
+      'تكرار المخالفة = مضاعفة العقوبة ×2',
+      'في حال مخالفة غير مدرجة يتم التقدير حسب الأقرب لها',
+      'جميع الغرامات تُسلَّم لمجلس القضاء العسكري',
+      'عدم حضور الاستدعاء خلال 24 ساعة = مضاعفة العقوبة',
+      'القرارات النهائية بيد القيادة المختصة'
+    ];
+
+    let selectedDegree = 'all';
+    let queryText = '';
+    const openCodes = new Set();
+
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function escapeReg(s) {
+      return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    }
+
+    function highlight(text, q) {
+      const safe = escapeHtml(text);
+      const t = q.trim();
+      if (!t) return safe;
+      return safe.replace(new RegExp(`(${escapeReg(escapeHtml(t))})`, 'gi'), '<mark class="hit">$1</mark>');
+    }
+
+    function renderTabs() {
+      const row = document.getElementById('tabsRow');
+      row.innerHTML = '';
+
+      const makeBtn = (label, val, active) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.textContent = label;
+        b.className = active
+          ? 'shrink-0 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500 text-slate-950'
+          : 'shrink-0 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-bold bg-amariah-card text-slate-300 border border-amariah-border hover:text-white';
+        b.onclick = () => {
+          selectedDegree = val;
+          renderTabs();
+          renderViolations();
+        };
+        return b;
+      };
+
+      row.appendChild(makeBtn('الكل', 'all', selectedDegree === 'all'));
+      DEGREES.forEach((d) => row.appendChild(makeBtn(d.name, d.id, selectedDegree === d.id)));
+
+      const link = document.createElement('a');
+      link.href = '#penalties';
+      link.textContent = 'لائحة العقوبات';
+      link.className = 'shrink-0 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-extrabold bg-emerald-500/15 text-emerald-300 border border-emerald-500/35';
+      row.appendChild(link);
+    }
+
+    function renderViolations() {
+      const list = document.getElementById('degreesList');
+      const noRes = document.getElementById('noResults');
+      const status = document.getElementById('filterStatus');
+      const clearBtn = document.getElementById('clearBtn');
+      const q = queryText.trim().toLowerCase();
+
+      clearBtn.classList.toggle('hidden', !q);
+      list.innerHTML = '';
+
+      let shown = 0;
+
+      DEGREES.forEach((deg) => {
+        if (selectedDegree !== 'all' && Number(selectedDegree) !== deg.id) return;
+
+        const matches = deg.items.filter(
+          ([code, text]) => !q || code.toLowerCase().includes(q) || text.toLowerCase().includes(q)
+        );
+        if (!matches.length) return;
+
+        shown += matches.length;
+
+        const box = document.createElement('div');
+        box.className = 'rounded-2xl bg-amariah-card border border-amariah-border overflow-hidden';
+
+        const head = document.createElement('div');
+        head.className = 'p-4 sm:p-5 bg-white/[0.02] border-b border-amariah-border flex flex-wrap items-center justify-between gap-2';
+        head.innerHTML = `
+          <div>
+            <h3 class="text-lg sm:text-xl font-extrabold text-white">${escapeHtml(deg.heading)} <span class="text-xs font-bold text-emerald-400">(${matches.length} بند)</span></h3>
+            <p class="text-xs sm:text-sm text-slate-400 mt-0.5">${escapeHtml(deg.desc)}</p>
+          </div>
+          <span class="px-3 py-1 rounded-lg bg-amariah-dark border border-amariah-border text-xs font-black text-emerald-400">${escapeHtml(deg.name)}</span>
+        `;
+
+        const grid = document.createElement('div');
+        grid.className = 'p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-2.5';
+
+        matches.forEach(([code, text]) => {
+          const isOpen = openCodes.has(code) || Boolean(q);
+          const item = document.createElement('div');
+          item.className = 'rounded-xl bg-amariah-dark/80 border border-amariah-border/80 hover:border-emerald-500/40 transition';
+
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'w-full p-3 text-right flex items-center justify-between gap-2';
+          btn.innerHTML = `
+            <div class="flex items-center gap-2.5">
+              <span class="px-2 py-0.5 rounded-md bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 text-xs font-extrabold shrink-0">${highlight(code, queryText)}</span>
+              <span class="text-xs sm:text-sm font-bold text-slate-100">${highlight(text, queryText)}</span>
+            </div>
+            <span class="text-xs text-slate-400">${isOpen ? '−' : '+'}</span>
+          `;
+
+          const detail = document.createElement('div');
+          detail.className = `${isOpen ? 'block' : 'hidden'} px-3 pb-3 pt-1 border-t border-amariah-border/50 text-xs text-slate-300`;
+          detail.textContent = `${deg.name} (${code}) — ${deg.desc}`;
+
+          btn.onclick = () => {
+            if (detail.classList.contains('hidden')) {
+              detail.classList.remove('hidden');
+              openCodes.add(code);
+              btn.lastElementChild.textContent = '−';
+            } else {
+              detail.classList.add('hidden');
+              openCodes.delete(code);
+              btn.lastElementChild.textContent = '+';
+            }
+          };
+
+          item.appendChild(btn);
+          item.appendChild(detail);
+          grid.appendChild(item);
+        });
+
+        box.appendChild(head);
+        box.appendChild(grid);
+        list.appendChild(box);
+      });
+
+      noRes.classList.toggle('hidden', shown > 0);
+      if (q || selectedDegree !== 'all') {
+        status.classList.remove('hidden');
+        status.textContent = `عدد البنود الظاهرة: ${shown}`;
+      } else {
+        status.classList.add('hidden');
+      }
+    }
+
+    function renderMatrix() {
+      const container = document.getElementById('matrixCards');
+      container.innerHTML = '';
+
+      Object.entries(MATRIX).forEach(([g, info]) => {
+        const card = document.createElement('div');
+        card.className = 'rounded-2xl bg-amariah-card border border-amariah-border overflow-hidden';
+        const rows = RANKS.map(
+          (r) => `
+          <tr class="border-b border-amariah-border/60 last:border-none">
+            <td class="py-2.5 px-4 text-xs sm:text-sm font-bold text-slate-200">${escapeHtml(r)}</td>
+            <td class="py-2.5 px-4 text-xs sm:text-sm font-extrabold text-emerald-300 text-left">${escapeHtml(info.map[r])}</td>
+          </tr>
+        `
+        ).join('');
+
+        card.innerHTML = `
+          <div class="px-4 py-3 bg-white/[0.03] border-b border-amariah-border font-extrabold text-sm sm:text-base text-white">
+            ${g}. ${escapeHtml(info.title)}
+          </div>
+          <table class="w-full border-collapse"><tbody>${rows}</tbody></table>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function initQuickPicker() {
+      const rankPicker = document.getElementById('rankPicker');
+      const gradePicker = document.getElementById('gradePicker');
+      const out = document.getElementById('quickPenaltyOutput');
+
+      RANKS.forEach((r) => {
+        const opt = document.createElement('option');
+        opt.value = r;
+        opt.textContent = r;
+        rankPicker.appendChild(opt);
+      });
+
+      const update = () => {
+        const r = rankPicker.value;
+        const g = Number(gradePicker.value);
+        if (g <= 4) {
+          out.textContent = MATRIX[g].map[r];
+        } else if (g === 5) {
+          out.textContent = 'عسكرية مباشرة + إمكانية الفصل (حسب التقدير)';
+        } else if (g === 6) {
+          out.textContent = 'فصل من الخدمة';
+        } else {
+          out.textContent = 'فصل نهائي + رفع للقيادة العليا';
+        }
+      };
+
+      rankPicker.onchange = update;
+      gradePicker.onchange = update;
+      update();
+    }
+
+    function renderRules() {
+      const ul = document.getElementById('generalRulesList');
+      ul.innerHTML = '';
+      GENERAL_RULES.forEach((rule, idx) => {
+        const li = document.createElement('li');
+        li.className = 'rounded-xl bg-amariah-dark/80 border border-amariah-border p-3.5 flex items-center gap-3';
+        li.innerHTML = `
+          <span class="w-7 h-7 rounded-lg bg-emerald-500/15 text-emerald-300 border border-emerald-500/30 flex items-center justify-center text-xs font-black shrink-0">${idx + 1}</span>
+          <span class="font-bold text-slate-100 text-xs sm:text-sm">${escapeHtml(rule)}</span>
+        `;
+        ul.appendChild(li);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const total = DEGREES.reduce((sum, d) => sum + d.items.length, 0);
+      document.getElementById('totalItemsCount').textContent = String(total);
+
+      renderTabs();
+      renderViolations();
+      renderMatrix();
+      initQuickPicker();
+      renderRules();
+
+      const searchBox = document.getElementById('searchBox');
+      searchBox.addEventListener('input', (e) => {
+        queryText = e.target.value;
+        renderViolations();
+      });
+
+      const resetAll = () => {
+        queryText = '';
+        searchBox.value = '';
+        selectedDegree = 'all';
+        renderTabs();
+        renderViolations();
+      };
+
+      document.getElementById('clearBtn').addEventListener('click', resetAll);
+      document.getElementById('resetSearchBtn').addEventListener('click', resetAll);
+
+      document.getElementById('expandAll').addEventListener('click', () => {
+        DEGREES.forEach((d) => d.items.forEach(([c]) => openCodes.add(c)));
+        renderViolations();
+      });
+
+      document.getElementById('collapseAll').addEventListener('click', () => {
+        openCodes.clear();
+        renderViolations();
+      });
+    });
+  </script>
+</body>
+</html>
