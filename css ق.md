@@ -1,0 +1,66 @@
+/* متغيرات الألوان والهوية البصرية لحرس الحدود - العمارية */
+:root {
+  --bg-primary: #06120c;
+  --bg-secondary: #0b1f15;
+  --bg-card: #0e261a;
+  --border-gold: rgba(234, 179, 8, 0.28);
+  --gold-main: #eab308;
+  --gold-light: #fde047;
+  --emerald-accent: #16a34a;
+  --text-main: #f3f7f4;
+  --text-muted: #9eb3a6;
+}
+
+* {
+  font-family: 'Cairo', sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(22, 163, 74, 0.16), transparent 52%),
+    radial-gradient(circle at 15% 22%, rgba(234, 179, 8, 0.08), transparent 40%),
+    linear-gradient(180deg, #07160f 0%, #050e0a 55%, #040a07 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+}
+
+.surface-card {
+  background: linear-gradient(180deg, rgba(16, 42, 29, 0.88), rgba(9, 24, 17, 0.95));
+  border: 1px solid rgba(234, 179, 8, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.gold-glow-btn {
+  background: linear-gradient(135deg, #facc15 0%, #eab308 55%, #ca8a04 100%);
+  color: #07140d;
+  box-shadow: 0 0 24px rgba(234, 179, 8, 0.32);
+}
+
+.gold-glow-btn:hover {
+  filter: brightness(1.06);
+}
+
+.emblem-ring {
+  background: radial-gradient(circle at 35% 30%, rgba(250, 204, 21, 0.26), rgba(12, 34, 23, 0.96) 70%);
+  box-shadow: 0 0 38px rgba(234, 179, 8, 0.24), inset 0 0 18px rgba(250, 204, 21, 0.15);
+}
+
+mark.hit {
+  background: rgba(250, 204, 21, 0.28);
+  color: #fef08a;
+  padding: 0 4px;
+  border-radius: 5px;
+}
+
+.chip-active {
+  background: linear-gradient(135deg, #facc15, #eab308) !important;
+  color: #06130c !important;
+  border-color: #fde047 !important;
+  font-weight: 800;
+}
+
+.law-item-card:hover .copy-badge {
+  opacity: 1;
+  transform: translateY(0);
+}

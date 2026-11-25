@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الأنظمة والقوانين العسكرية - حرس الحدود (العمارية)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <!-- ربط ملف التنسيقات الخارجي CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="antialiased selection:bg-amber-400 selection:text-emerald-950">
+
+  <!-- إشعار منبثق أنيق لنسخ البنود (بديل آمن ومباشر) -->
+  <div
+    id="toastNotice"
+    class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-50 px-4 py-2.5 rounded-xl bg-[#0a2216] text-amber-300 border border-amber-400/50 shadow-2xl text-xs sm:text-sm font-bold flex items-center gap-2"
+  >
+    <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+    <span id="toastText">تم نسخ البند</span>
+  </div>
+
+  <!-- الشريط العلوي -->
+  <header class="sticky top-0 z-30 bg-[#050e0a]/90 backdrop-blur border-b border-amber-400/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <a href="#top" class="flex items-center gap-3 shrink-0">
+        <div class="w-11 h-11 rounded-full emblem-ring border border-amber-400/75 flex items-center justify-center p-0.5 overflow-hidden">
+          <svg viewBox="0 0 240 240" class="w-full h-full" aria-label="شعار حرس الحدود">
+            <defs>
+              <linearGradient id="hdrGold" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fde047" />
+                <stop offset="55%" stop-color="#eab308" />
+                <stop offset="100%" stop-color="#b45309" />
+              </linearGradient>
+              <clipPath id="hdrInnerClip">
+                <circle cx="120" cy="126" r="64" />
+              </clipPath>
+            </defs>
+            <circle cx="120" cy="120" r="114" fill="#07150e" stroke="url(#hdrGold)" stroke-width="5" />
+            <circle cx="120" cy="120" r="102" fill="#f8fafc" stroke="#15803d" stroke-width="2" />
+            <path d="M120 198 C62 194, 34 146, 48 86 C54 62, 68 45, 84 37" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-dasharray="9 6" />
+            <path d="M120 198 C178 194, 206 146, 192 86 C186 62, 172 45, 156 37" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-dasharray="9 6" />
+            <path d="M108 196 L120 187 L132 196 M112 203 L120 194 L128 203" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round" />
+            <g clip-path="url(#hdrInnerClip)">
+              <rect x="52" y="58" width="62" height="136" fill="#1d4ed8" />
+              <path d="M114 58 Q126 105 112 145 T116 194 L132 194 L132 58 Z" fill="#e0f2fe" />
+              <rect x="126" y="58" width="62" height="136" fill="#eab308" />
+              <path d="M68 164 L168 88 L173 95 L73 171 Z" fill="#7f1d1d" stroke="#1e293b" stroke-width="2" />
+              <path d="M172 164 L72 88 L67 95 L167 171 Z" fill="#7f1d1d" stroke="#1e293b" stroke-width="2" />
+              <path d="M120 124 L120 176 M106 134 L134 134 M96 158 Q120 184 144 158" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="120" cy="120" r="6" fill="none" stroke="#ffffff" stroke-width="4" />
+              <circle cx="120" cy="103" r="21" fill="#7f1d1d" stroke="#f8fafc" stroke-width="2.5" />
+              <path d="M120 90 L120 106 M120 96 Q113 92 111 96 M120 96 Q127 92 129 96 M120 100 Q114 97 112 101 M120 100 Q126 97 128 101" fill="none" stroke="#22c55e" stroke-width="2.6" stroke-linecap="round" />
+              <path d="M108 111 Q120 105 132 111" fill="none" stroke="#22c55e" stroke-width="2.4" stroke-linecap="round" />
+            </g>
+            <circle cx="120" cy="126" r="64" fill="none" stroke="#0f172a" stroke-width="3.5" />
+            <path d="M74 70 Q120 57 166 70 L161 85 Q120 74 79 85 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5" />
+            <text x="120" y="78" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="900">وزارة الداخلية</text>
+            <path d="M74 176 Q120 191 166 176 L161 161 Q120 173 79 161 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5" />
+            <text x="120" y="177" text-anchor="middle" fill="#0f172a" font-size="10.5" font-weight="900">حرس الحدود</text>
+            <path d="M98 44 L94 27 L107 35 L120 22 L133 35 L146 27 L142 44 Z" fill="#fde047" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round" />
+            <rect x="97" y="43" width="46" height="6" rx="2.5" fill="#eab308" stroke="#0f172a" stroke-width="2" />
+          </svg>
+        </div>
+        <div>
+          <div class="text-sm sm:text-base font-extrabold text-amber-400">حرس الحدود — العمارية</div>
+          <div class="text-[11px] text-emerald-200/75">الأنظمة والقوانين العسكرية</div>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-1.5 text-xs font-bold">
+        <a href="#deg-1" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 1</a>
+        <a href="#deg-2" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 2</a>
+        <a href="#deg-3" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 3</a>
+        <a href="#deg-4" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 4</a>
+        <a href="#deg-5" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 5</a>
+        <a href="#deg-6" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 6</a>
+        <a href="#deg-7" class="px-3 py-1.5 rounded-lg text-emerald-100/80 hover:text-amber-300 hover:bg-emerald-950/70 transition">الدرجة 7</a>
+        <a href="#penalties" class="px-3 py-1.5 rounded-lg gold-glow-btn transition">لائحة العقوبات</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- المقدمة والإحصائيات والبحث -->
+  <section id="top" class="pt-10 pb-8 border-b border-amber-400/15">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <div class="w-28 h-28 sm:w-32 sm:h-32 mx-auto mb-4 rounded-full emblem-ring border-2 border-amber-400/80 flex items-center justify-center p-1 overflow-hidden">
+        <svg viewBox="0 0 240 240" class="w-full h-full" role="img" aria-label="شعار المديرية العامة لحرس الحدود">
+          <defs>
+            <linearGradient id="mainGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#fde047" />
+              <stop offset="55%" stop-color="#eab308" />
+              <stop offset="100%" stop-color="#b45309" />
+            </linearGradient>
+            <clipPath id="mainInnerClip">
+              <circle cx="120" cy="126" r="64" />
+            </clipPath>
+          </defs>
+          <circle cx="120" cy="120" r="114" fill="#07150e" stroke="url(#mainGoldGrad)" stroke-width="5" />
+          <circle cx="120" cy="120" r="102" fill="#f8fafc" stroke="#15803d" stroke-width="2" />
+          <path d="M120 198 C62 194, 34 146, 48 86 C54 62, 68 45, 84 37" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-dasharray="9 6" />
+          <path d="M120 198 C178 194, 206 146, 192 86 C186 62, 172 45, 156 37" fill="none" stroke="#16a34a" stroke-width="7" stroke-linecap="round" stroke-dasharray="9 6" />
+          <path d="M108 196 L120 187 L132 196 M112 203 L120 194 L128 203" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round" />
+          <g clip-path="url(#mainInnerClip)">
+            <rect x="52" y="58" width="62" height="136" fill="#1d4ed8" />
+            <path d="M114 58 Q126 105 112 145 T116 194 L132 194 L132 58 Z" fill="#e0f2fe" />
+            <rect x="126" y="58" width="62" height="136" fill="#eab308" />
+            <path d="M68 164 L168 88 L173 95 L73 171 Z" fill="#7f1d1d" stroke="#1e293b" stroke-width="2" />
+            <path d="M172 164 L72 88 L67 95 L167 171 Z" fill="#7f1d1d" stroke="#1e293b" stroke-width="2" />
+            <path d="M120 124 L120 176 M106 134 L134 134 M96 158 Q120 184 144 158" fill="none" stroke="#ffffff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="120" cy="120" r="6" fill="none" stroke="#ffffff" stroke-width="4" />
+            <circle cx="120" cy="103" r="21" fill="#7f1d1d" stroke="#f8fafc" stroke-width="2.5" />
+            <path d="M120 90 L120 106 M120 96 Q113 92 111 96 M120 96 Q127 92 129 96 M120 100 Q114 97 112 101 M120 100 Q126 97 128 101" fill="none" stroke="#22c55e" stroke-width="2.6" stroke-linecap="round" />
+            <path d="M108 111 Q120 105 132 111" fill="none" stroke="#22c55e" stroke-width="2.4" stroke-linecap="round" />
+          </g>
+          <circle cx="120" cy="126" r="64" fill="none" stroke="#0f172a" stroke-width="3.5" />
+          <path d="M74 70 Q120 57 166 70 L161 85 Q120 74 79 85 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5" />
+          <text x="120" y="78" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="900">وزارة الداخلية</text>
+          <path d="M74 176 Q120 191 166 176 L161 161 Q120 173 79 161 Z" fill="#f59e0b" stroke="#0f172a" stroke-width="2.5" />
+          <text x="120" y="177" text-anchor="middle" fill="#0f172a" font-size="10.5" font-weight="900">حرس الحدود</text>
+          <path d="M98 44 L94 27 L107 35 L120 22 L133 35 L146 27 L142 44 Z" fill="#fde047" stroke="#0f172a" stroke-width="2.5" stroke-linejoin="round" />
+          <rect x="97" y="43" width="46" height="6" rx="2.5" fill="#eab308" stroke="#0f172a" stroke-width="2" />
+        </svg>
+      </div>
+
+      <p class="text-xs sm:text-sm font-extrabold tracking-wide text-amber-400 mb-1">
+        المديرية العامة لحرس الحدود — العمارية
+      </p>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-2">
+        الأنظمة والقوانين العسكرية
+      </h1>
+      <p class="text-sm sm:text-base text-emerald-100/75 max-w-2xl mx-auto mb-7">
+        دليل شامل لبنود المخالفات والعقوبات المعتمدة في حرس الحدود — العمارية
+      </p>
+
+      <!-- الإحصائيات -->
+      <div class="grid grid-cols-3 gap-3 sm:gap-5 max-w-2xl mx-auto mb-8">
+        <div class="surface-card rounded-2xl p-4">
+          <div class="text-2xl sm:text-3xl font-black text-amber-400">7</div>
+          <div class="text-xs sm:text-sm text-emerald-100/75 mt-1">درجات مخالفات</div>
+        </div>
+        <div class="surface-card rounded-2xl p-4">
+          <div id="totalLawsCount" class="text-2xl sm:text-3xl font-black text-amber-400">98</div>
+          <div class="text-xs sm:text-sm text-emerald-100/75 mt-1">بند قانوني</div>
+        </div>
+        <div class="surface-card rounded-2xl p-4">
+          <div class="text-2xl sm:text-3xl font-black text-amber-400">8</div>
+          <div class="text-xs sm:text-sm text-emerald-100/75 mt-1">رتب عسكرية</div>
+        </div>
+      </div>
+
+      <!-- شريط البحث -->
+      <div class="max-w-2xl mx-auto mb-4 relative">
+        <input
+          id="searchInput"
+          type="text"
+          placeholder="ابحث برقم البند أو اسم المخالفة (مثال: 3-13، مطاردات، موجة، فصل)..."
+          class="w-full rounded-2xl bg-[#0a1d14] border border-amber-400/30 focus:border-amber-400 focus:ring-2 focus:ring-amber-400/20 outline-none py-3.5 pr-11 pl-12 text-sm text-white placeholder:text-emerald-200/45 transition"
+        />
+        <svg class="w-5 h-5 text-amber-400/80 absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="11" cy="11" r="7" />
+          <path d="m20 20-3.5-3.5" stroke-linecap="round" />
+        </svg>
+        <button
+          id="clearSearchBtn"
+          type="button"
+          title="مسح البحث"
+          class="hidden absolute left-3 top-1/2 -translate-y-1/2 text-xs px-2.5 py-1 rounded-lg bg-emerald-950 text-amber-300 border border-amber-400/30 hover:bg-emerald-900"
+        >
+          مسح
+        </button>
+      </div>
+
+      <!-- أزرار التنقل السريع بين الدرجات -->
+      <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+        <button type="button" data-filter="all" class="filter-chip chip-active px-3.5 py-1.5 rounded-xl text-xs border border-amber-400/30 bg-[#0b1f15] text-emerald-100 transition">
+          الكل
+        </button>
+        <a href="#deg-1" data-filter="1" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة الأولى</a>
+        <a href="#deg-2" data-filter="2" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة الثانية</a>
+        <a href="#deg-3" data-filter="3" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة الثالثة</a>
+        <a href="#deg-4" data-filter="4" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة الرابعة</a>
+        <a href="#deg-5" data-filter="5" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة الخامسة</a>
+        <a href="#deg-6" data-filter="6" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة السادسة</a>
+        <a href="#deg-7" data-filter="7" class="filter-chip px-3.5 py-1.5 rounded-xl text-xs font-semibold border border-amber-400/25 bg-[#0b1f15] text-emerald-100 hover:border-amber-400 transition">الدرجة السابعة</a>
+        <a href="#penalties" class="px-3.5 py-1.5 rounded-xl text-xs font-extrabold gold-glow-btn transition">لائحة العقوبات</a>
+      </div>
+
+      <div id="searchMeta" class="mt-3 text-xs text-amber-300/90 min-h-[18px]"></div>
+    </div>
+  </section>
+
+  <!-- المحتوى الرئيسي -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-12">
+    <div id="degreesContainer" class="space-y-8"></div>
+
+    <div id="emptyState" class="hidden surface-card rounded-2xl p-10 text-center">
+      <p class="text-lg font-bold text-amber-400 mb-2">لا توجد نتائج مطابقة لبحثك</p>
+      <p class="text-sm text-emerald-100/70 mb-4">جرّب البحث بكلمة أخرى أو رقم بند مختلف.</p>
+      <button id="resetEmptyBtn" type="button" class="px-4 py-2 rounded-xl gold-glow-btn text-xs font-extrabold">
+        عرض جميع البنود
+      </button>
+    </div>
+
+    <!-- لائحة العقوبات الرسمية -->
+    <section id="penalties" class="pt-4 space-y-6">
+      <div class="text-center">
+        <span class="inline-block px-3.5 py-1 rounded-full text-xs font-bold bg-emerald-950 text-amber-300 border border-amber-400/30 mb-2">
+          المرجع المعتمد للرتب والدرجات
+        </span>
+        <h2 class="text-2xl sm:text-3xl font-black text-white">لائحة العقوبات الرسمية</h2>
+        <p class="text-sm text-emerald-100/75 mt-1">العقوبات المفصلة حسب الرتبة لكل درجة مخالفة</p>
+      </div>
+
+      <div class="surface-card rounded-2xl p-4 sm:p-5 border-r-4 border-r-amber-400 text-sm text-emerald-100/90">
+        <strong class="text-amber-400">ملاحظة:</strong> العقوبة تُحدد حسب درجة المخالفة + الرتبة، ويجوز للقيادة التشديد أو التخفيف (تقديري).
+      </div>
+
+      <div id="penaltyMatrices" class="grid grid-cols-1 lg:grid-cols-2 gap-6"></div>
+
+      <div id="upperDegreesCards" class="grid grid-cols-1 md:grid-cols-3 gap-5"></div>
+
+      <!-- الضوابط العامة -->
+      <div class="surface-card rounded-2xl p-6">
+        <h3 class="text-xl font-extrabold text-amber-400 mb-4 flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-400"></span>
+          ضوابط عامة
+        </h3>
+        <ul id="generalRulesList" class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-emerald-50/90"></ul>
+      </div>
+    </section>
+  </main>
+
+  <!-- التذييل -->
+  <footer class="border-t border-amber-400/20 bg-[#040c08] mt-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-right">
+      <div class="space-y-1">
+        <p class="text-sm font-bold text-white">
+          حقوق العمارية © 2026 | المديرية العامة لحرس الحدود — العمارية
+        </p>
+        <p class="text-xs text-amber-300/90 font-semibold">
+          تنفيذ سلطان الحربي
+        </p>
+      </div>
+      <a
+        href="https://discord.gg/amrr"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="px-4 py-2 rounded-xl bg-[#0c2418] hover:bg-[#123524] border border-amber-400/35 text-xs font-bold text-amber-300 transition"
+      >
+        discord.gg/amrr
+      </a>
+    </div>
+  </footer>
+
+  <!-- ربط ملف السكربت الخارجي JS -->
+  <script src="script.js"></script>
+</body>
+</html>
