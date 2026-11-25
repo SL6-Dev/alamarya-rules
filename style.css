@@ -1,14 +1,14 @@
-/* متغيرات الألوان والهوية البصرية لحرس الحدود - العمارية */
+/* متغيرات الألوان والهوية البصرية لحرس الحدود — الأخضر الداكن والذهبي */
 :root {
-  --bg-primary: #06120c;
-  --bg-secondary: #0b1f15;
-  --bg-card: #0e261a;
-  --border-gold: rgba(234, 179, 8, 0.28);
-  --gold-main: #eab308;
-  --gold-light: #fde047;
-  --emerald-accent: #16a34a;
-  --text-main: #f3f7f4;
-  --text-muted: #9eb3a6;
+  --bg-primary: #0a1612;
+  --bg-secondary: #102419;
+  --bg-card: #193727;
+  --border-gold: rgba(212, 175, 55, 0.30);
+  --gold-main: #d4af37;
+  --gold-light: #e6cd73;
+  --emerald-accent: #1e3b29;
+  --text-main: #f1f4f2;
+  --text-muted: #8f9a95;
 }
 
 * {
@@ -18,23 +18,24 @@
 
 body {
   background:
-    radial-gradient(circle at 50% 0%, rgba(22, 163, 74, 0.16), transparent 52%),
-    radial-gradient(circle at 15% 22%, rgba(234, 179, 8, 0.08), transparent 40%),
-    linear-gradient(180deg, #07160f 0%, #050e0a 55%, #040a07 100%);
+    radial-gradient(ellipse at 100% 100%, rgba(212, 175, 55, 0.10), transparent 55%),
+    radial-gradient(ellipse at 50% 0%, rgba(30, 70, 45, 0.55), transparent 60%),
+    linear-gradient(180deg, #14291f 0%, #112419 40%, #0d1915 100%);
+  background-attachment: fixed;
   color: var(--text-main);
   min-height: 100vh;
 }
 
 .surface-card {
-  background: linear-gradient(180deg, rgba(16, 42, 29, 0.88), rgba(9, 24, 17, 0.95));
-  border: 1px solid rgba(234, 179, 8, 0.2);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(180deg, rgba(25, 55, 39, 0.92), rgba(16, 36, 25, 0.96));
+  border: 1px solid #1e3b29;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.30);
 }
 
 .gold-glow-btn {
-  background: linear-gradient(135deg, #facc15 0%, #eab308 55%, #ca8a04 100%);
-  color: #07140d;
-  box-shadow: 0 0 24px rgba(234, 179, 8, 0.32);
+  background: linear-gradient(135deg, #d4af37 0%, #c7a32c 55%, #bb9721 100%);
+  color: #0a1612;
+  box-shadow: 0 0 22px rgba(212, 175, 55, 0.28);
 }
 
 .gold-glow-btn:hover {
@@ -42,21 +43,22 @@ body {
 }
 
 .emblem-ring {
-  background: radial-gradient(circle at 35% 30%, rgba(250, 204, 21, 0.26), rgba(12, 34, 23, 0.96) 70%);
-  box-shadow: 0 0 38px rgba(234, 179, 8, 0.24), inset 0 0 18px rgba(250, 204, 21, 0.15);
+  background: #f3f4f4;
+  border-color: #d4af37 !important;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
 }
 
 mark.hit {
-  background: rgba(250, 204, 21, 0.28);
-  color: #fef08a;
+  background: rgba(212, 175, 55, 0.28);
+  color: #f0dc8c;
   padding: 0 4px;
   border-radius: 5px;
 }
 
 .chip-active {
-  background: linear-gradient(135deg, #facc15, #eab308) !important;
-  color: #06130c !important;
-  border-color: #fde047 !important;
+  background: linear-gradient(135deg, #d4af37, #bb9721) !important;
+  color: #0a1612 !important;
+  border-color: #e6cd73 !important;
   font-weight: 800;
 }
 

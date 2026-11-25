@@ -331,7 +331,7 @@ function renderDegrees(query = "") {
         <div
           data-copy="${escapeHtml(`${code} - ${desc}`)}"
           title="اضغط لنسخ البند"
-          class="law-item-card cursor-pointer flex items-start justify-between gap-3 p-3.5 rounded-xl bg-[#07160f]/90 border border-amber-400/15 hover:border-amber-400/45 transition"
+          class="law-item-card cursor-pointer flex items-start justify-between gap-3 p-3.5 rounded-xl bg-[#0f2318]/90 border border-amber-400/15 hover:border-amber-400/45 transition"
         >
           <div class="flex items-start gap-3 min-w-0">
             <span class="shrink-0 px-2.5 py-1 rounded-lg text-xs font-extrabold bg-emerald-950 text-amber-300 border border-amber-400/30">
@@ -429,7 +429,7 @@ function renderPenalties() {
   if (rulesEl) {
     rulesEl.innerHTML = GENERAL_RULES.map(
       (rule) => `
-      <li class="flex items-start gap-2.5 p-3 rounded-xl bg-[#07160f]/90 border border-amber-400/15">
+      <li class="flex items-start gap-2.5 p-3 rounded-xl bg-[#0f2318]/90 border border-amber-400/15">
         <span class="text-amber-400 font-black mt-0.5">•</span>
         <span>${rule}</span>
       </li>
